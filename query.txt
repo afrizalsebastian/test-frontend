@@ -1,0 +1,6 @@
+how to connect camera to javascript
+loop in ejs
+control flow in ejs
+how to access localstorage in express
+how to add image backgroung to element with javascript
+how to hide input file in html and css
