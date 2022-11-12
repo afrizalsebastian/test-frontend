@@ -1,0 +1,53 @@
+<%- include('partials/header'); -%>
+<body>
+    <div id="root">
+        <nav>
+            <a href="/change-profile">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 10C0 7.34784 1.05357 4.8043 2.92893 2.92893C4.8043 1.05357 7.34784 0 10 0C11.3132 0 12.6136 0.258658 13.8268 0.761205C15.0401 1.26375 16.1425 2.00035 17.0711 2.92893C17.9997 3.85752 18.7362 4.95991 19.2388 6.17317C19.7413 7.38642 20 8.68678 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20C8.68678 20 7.38642 19.7413 6.17317 19.2388C4.95991 18.7362 3.85752 17.9997 2.92893 17.0711C1.05357 15.1957 0 12.6522 0 10ZM16 9H8L11.5 5.5L10.08 4.08L4.16 10L10.08 15.92L11.5 14.5L8 11H16V9Z" fill="white"/>
+                </svg>
+            </a>
+            <h1>Ambil Foto</h1>
+        </nav>
+
+        <div>
+            <div class="gallery-container">
+                <video id="cam" autoplay=""></video>
+                <div id="capt"></div>
+                <svg width="289" height="288" viewBox="0 0 289 288" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="55" height="10" rx="5" fill="white"/>
+                    <rect x="0.31778" y="55.0569" width="55" height="10" rx="5" transform="rotate(-90.331 0.31778 55.0569)" fill="white"/>
+                    <rect x="2" y="288" width="55" height="10" rx="5" transform="rotate(-90 2 288)" fill="white"/>
+                    <rect x="57.0569" y="287.682" width="55" height="10" rx="5" transform="rotate(179.669 57.0569 287.682)" fill="white"/>
+                    <rect x="289" y="283.057" width="55" height="10" rx="5" transform="rotate(180 289 283.057)" fill="white"/>
+                    <rect x="288.682" y="228" width="55" height="10" rx="5" transform="rotate(89.669 288.682 228)" fill="white"/>
+                    <rect x="288.03" y="0.0284424" width="55" height="10" rx="5" transform="rotate(90 288.03 0.0284424)" fill="white"/>
+                    <rect x="232.973" y="0.346191" width="55" height="10" rx="5" transform="rotate(-0.331042 232.973 0.346191)" fill="white"/>
+                </svg>
+                <canvas id="canvas" style="display: hidden;"></canvas>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let camera = document.querySelector("#cam")
+        let capture = document.querySelector("#capt");
+        let canvas = document.querySelector("#canvas");
+
+        addEventListener('DOMContentLoaded', async function() {
+        let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            camera.srcObject = stream;
+        });
+
+        capture.addEventListener('click', ()=>{
+            canvas.getContext('2d').drawImage(camera, 0, 0, canvas.width, canvas.height);
+            let temp_url = canvas.toDataURL('image/jpeg');
+
+            localStorage.setItem('photo', temp_url);
+            
+            window.location.href='/changed';
+        })
+    </script>
+</body>
+</html>

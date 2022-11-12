@@ -7,18 +7,20 @@
                     <path d="M0 10C0 7.34784 1.05357 4.8043 2.92893 2.92893C4.8043 1.05357 7.34784 0 10 0C11.3132 0 12.6136 0.258658 13.8268 0.761205C15.0401 1.26375 16.1425 2.00035 17.0711 2.92893C17.9997 3.85752 18.7362 4.95991 19.2388 6.17317C19.7413 7.38642 20 8.68678 20 10C20 12.6522 18.9464 15.1957 17.0711 17.0711C15.1957 18.9464 12.6522 20 10 20C8.68678 20 7.38642 19.7413 6.17317 19.2388C4.95991 18.7362 3.85752 17.9997 2.92893 17.0711C1.05357 15.1957 0 12.6522 0 10ZM16 9H8L11.5 5.5L10.08 4.08L4.16 10L10.08 15.92L11.5 14.5L8 11H16V9Z" fill="white"/>
                 </svg>
             </a>
-            <h1>Ganti Foto Profil</h1>
+            <h1>Ganti Gambar</h1>
         </nav>
         
         <% if(profileChanged) {%>
-            
+            <img id="canv" src="" alt="">
         <%}else{%>
             <div class="pic-container"></div>
         <%} %>
         
-        <a id="ambil-foto" href="/ambil-foto">Ambil dari kamera</a>
-        <a id="ambil-gallery" href="/ambil-gallery">Ambil dari gallery</a>
-
+        <a id="ambil-foto" href="/take-from-camera">Ambil dari kamera</a>
+        <form id="ambil-gallery"action="">
+            <label for="file" href="" class="block font-bold text-center">Ambil dari Galery</label>
+            <input id="file" type="file" style="display: none;">
+        </form>
         <% if(profileChanged) {%>
             <a id="save" class="saved" href="/">Simpan</a>
         <%}else{%>
@@ -26,3 +28,21 @@
         <%} %>
     </div>
 </body>
+    <script>
+        if(localStorage.getItem('photo')){
+            document.querySelector("#canv").setAttribute('src', localStorage.getItem("photo"));
+        }
+
+        const inputFile = document.querySelector('#file');
+        inputFile.addEventListener("change", ()=>{
+            let readerFile = new FileReader();
+
+            readerFile.readAsDataURL(inputFile.files[0]);
+
+            readerFile.onload = ()=>{
+                localStorage.setItem("photo", readerFile.result);
+            }
+            window.location.href ='/changed-gallery';
+        })
+    </script>
+</html>
