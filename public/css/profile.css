@@ -1,0 +1,155 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* Profile Page */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #212121;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+#root{
+    background-color: #fff;
+    width: 375px;
+    height: 667px;
+    margin: auto;
+    margin-top: 5vh;
+    overflow: hidden;
+}
+
+nav{
+    background-color: #002984;
+    height: 56px;
+    display: grid;
+    grid-template-areas: "back title";
+    grid-template-columns: 1fr 8fr;
+}
+
+nav svg{
+    grid-area: back;
+    cursor: pointer;
+    margin: 18px 17px;
+}
+
+nav h1{
+    grid-area: title;
+    color: #fff;
+    margin-top: 12px;
+}
+
+.detail{
+    display: grid;
+    grid-template-areas: 
+    "photo name"
+    "photo class"
+    "photo empty";
+    grid-template-columns: 2fr 8fr;
+}
+
+.detail a{
+    grid-area: photo;
+}
+
+.photo-profile{
+    width: 56px;
+    height: 56px;
+    background-color:#E0E0E0 ;
+    border-radius: 8px;
+    margin: 16px 15px;
+    box-shadow: 4px 4px 8px rgba(0, 41, 132, 0.25);;
+}
+
+.photo-profile svg{
+    margin:18px;
+    cursor: pointer;
+}
+
+.detail h2{
+    grid-area: name;
+    font-size: 12px;
+    margin-top: 16px;
+}
+
+.detail p{
+    grid-area: class;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.block{
+    width: 341px;
+    height: 196px;
+    background-color: #002984;
+    margin: 16px auto;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 41, 132, 0.25);
+}
+
+/* Changed Profile */
+.pic-container{
+    width: 343px;
+    height: 343px;
+    margin: 16px;
+    background-color:#E0E0E0;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 41, 132, 0.25);
+    margin-bottom: 34px;
+}
+
+#ambil-foto{
+    text-decoration: none;
+    color: white;
+    padding-left: 122px;
+    padding-right: 122px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #006C84;
+    position: relative;
+    left: 16px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 41, 132, 0.25);
+    font-size: 12px;
+}
+
+#ambil-gallery{
+    text-decoration: none;
+    color: white;
+    padding-left: 123px;
+    padding-right: 123px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #006C84;
+    position: relative;
+    left: 16px;
+    top:36px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 41, 132, 0.25);
+    font-size: 12px;
+}
+
+
+#save{
+    position: relative;
+    top:145px;
+    cursor: pointer;
+    padding:10px;
+    padding-left: 168px;
+    padding-right: 168px;
+    font-size: 12px;
+}
+
+.non-saved{
+    background-color: #E0E0E0;
+}
+
+.saved{
+    background-color: #002984;
+    color: white;
+    text-decoration: none;
+}
+
